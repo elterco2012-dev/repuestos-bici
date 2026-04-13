@@ -2,276 +2,159 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Cartel - Repuestos de Bici Jorge</title>
+<title>Cartel A4 - Repuestos de Bici Jorge</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet" />
+
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+@page {
+  size: A4;
+  margin: 0;
+}
 
-  body {
-    font-family: 'Nunito', sans-serif;
-    background: #f1f5f9;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    padding: 32px 16px;
-    gap: 32px;
-  }
+body {
+  margin: 0;
+  font-family: 'Nunito', sans-serif;
+  background: #fff;
+}
 
-  /* ── CARTEL PRINCIPAL ── */
-  .cartel {
-    background: #fff;
-    border-radius: 24px;
-    padding: 36px 32px 32px;
-    max-width: 480px;
-    width: 100%;
-    box-shadow: 0 8px 40px rgba(0,0,0,0.10);
-    text-align: center;
-  }
+/* CONTENEDOR A4 */
+.a4 {
+  width: 210mm;
+  height: 297mm;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  .cartel-titulo {
-    font-size: 13px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: #94a3b8;
-    margin-bottom: 6px;
-  }
+/* CARTEL */
+.cartel {
+  width: 180mm;
+  padding: 20mm;
+  border: 2px solid #e2e8f0;
+  border-radius: 20px;
+  text-align: center;
+}
 
-  .cartel h1 {
-    font-size: 26px;
-    font-weight: 900;
-    color: #1e293b;
-    line-height: 1.2;
-    margin-bottom: 28px;
-  }
-  .cartel h1 span { color: #16a34a; }
+.cartel-titulo {
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #64748b;
+  margin-bottom: 8px;
+}
 
-  /* pasos */
-  .pasos {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    margin-bottom: 28px;
-  }
+h1 {
+  font-size: 32px;
+  font-weight: 900;
+  margin-bottom: 25px;
+}
+h1 span { color: #16a34a; }
 
-  .paso {
-    display: flex;
-    align-items: flex-start;
-    gap: 14px;
-    text-align: left;
-    position: relative;
-  }
+/* PASOS */
+.pasos {
+  text-align: left;
+  margin-bottom: 25px;
+}
 
-  .paso:not(:last-child)::after {
-    content: '';
-    position: absolute;
-    left: 21px;
-    top: 48px;
-    width: 2px;
-    height: 28px;
-    background: #e2e8f0;
-    border-radius: 2px;
-  }
+.paso {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+}
 
-  .paso-num {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 22px;
-    flex-shrink: 0;
-    margin-bottom: 24px;
-  }
-  .paso:nth-child(1) .paso-num { background: #dbeafe; }
-  .paso:nth-child(2) .paso-num { background: #dcfce7; }
-  .paso:nth-child(3) .paso-num { background: #d1fae5; }
+.paso-num {
+  font-size: 24px;
+}
 
-  .paso-texto h3 {
-    font-size: 16px;
-    font-weight: 800;
-    color: #1e293b;
-    margin-bottom: 2px;
-    padding-top: 8px;
-  }
+.paso-texto h3 {
+  font-size: 16px;
+  font-weight: 800;
+}
 
-  .paso-texto p {
-    font-size: 13px;
-    color: #64748b;
-    line-height: 1.4;
-  }
+.paso-texto p {
+  font-size: 13px;
+  color: #64748b;
+}
 
-  /* QR wrapper */
-  .qr-wrapper {
-    background: #fff;
-    border: 3px solid #16a34a;
-    border-radius: 20px;
-    padding: 16px;
-    display: inline-block;
-    position: relative;
-    margin-bottom: 16px;
-  }
+/* QR */
+.qr-wrapper {
+  border: 3px solid #16a34a;
+  border-radius: 20px;
+  padding: 15px;
+  margin: 20px auto;
+  width: fit-content;
+}
 
-  .qr-label-top {
-    font-size: 11px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: #16a34a;
-    margin-bottom: 10px;
-  }
+.qr-label {
+  font-size: 13px;
+  font-weight: 800;
+  color: #16a34a;
+  margin-bottom: 10px;
+}
 
-  .qr-img {
-    width: 180px;
-    height: 180px;
-    display: block;
-    border-radius: 8px;
-  }
+.qr-img {
+  width: 260px;
+  height: 260px;
+}
 
-  /* logo encima del QR */
-  .qr-logo {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 40px;
-    height: 40px;
-    background: #16a34a;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 22px;
-    border: 3px solid #fff;
-  }
+/* WhatsApp */
+.wa {
+  margin-top: 10px;
+  font-size: 20px;
+  font-weight: 900;
+  color: #25D366;
+}
 
-  .qr-label-bottom {
-    font-size: 12px;
-    font-weight: 700;
-    color: #475569;
-    margin-top: 10px;
-    text-align: center;
-  }
-
-  /* divider */
-  .divider {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin: 6px 0 16px;
-    color: #94a3b8;
-    font-size: 12px;
-    font-weight: 700;
-  }
-  .divider::before, .divider::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: #e2e8f0;
-  }
-
-  /* WhatsApp número */
-  .wa-numero {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: #25D366;
-    color: #fff;
-    border-radius: 40px;
-    padding: 10px 22px;
-    font-size: 17px;
-    font-weight: 800;
-    letter-spacing: 0.5px;
-    text-decoration: none;
-  }
-  .wa-numero svg { width: 20px; height: 20px; fill: #fff; }
-
-  .horario-tag {
-    margin-top: 16px;
-    font-size: 12px;
-    font-weight: 700;
-    color: #94a3b8;
-  }
-  .horario-tag strong { color: #475569; }
-
-  /* ── PRINT ── */
-  @media print {
-    body { background: #fff; padding: 0; }
-    .cartel { box-shadow: none; border: 1px solid #e2e8f0; }
-    .no-print { display: none; }
-  }
-
-  .btn-imprimir {
-    font-family: 'Nunito', sans-serif;
-    background: #1e293b;
-    color: #fff;
-    border: none;
-    padding: 12px 28px;
-    border-radius: 12px;
-    font-size: 15px;
-    font-weight: 700;
-    cursor: pointer;
-  }
-  .btn-imprimir:hover { background: #334155; }
 </style>
 </head>
+
 <body>
 
-<div class="cartel">
-  <div class="cartel-titulo">Repuestos de Bici Jorge · VIRREY DEL PINO</div>
-  <h1>¿Cómo <span>funciona</span>?</h1>
+<div class="a4">
+  <div class="cartel">
 
-  <div class="pasos">
-    <div class="paso">
-      <div class="paso-num">📷</div>
-      <div class="paso-texto">
-        <h3>1. Escaneá el código QR</h3>
-        <p>Apuntá la cámara del celular al código y abrí la página.</p>
+    <div class="cartel-titulo">REPUESTOS DE BICI JORGE</div>
+
+    <h1>¿Cómo <span>funciona</span>?</h1>
+
+    <div class="pasos">
+      <div class="paso">
+        <div class="paso-num">📷</div>
+        <div class="paso-texto">
+          <h3>Escaneá el QR</h3>
+          <p>Abrí la cámara del celular y apuntá al código.</p>
+        </div>
+      </div>
+
+      <div class="paso">
+        <div class="paso-num">🔧</div>
+        <div class="paso-texto">
+          <h3>Elegí el repuesto</h3>
+          <p>Buscá lo que necesitás en el catálogo.</p>
+        </div>
+      </div>
+
+      <div class="paso">
+        <div class="paso-num">💬</div>
+        <div class="paso-texto">
+          <h3>Consultá por WhatsApp</h3>
+          <p>Te respondemos al instante.</p>
+        </div>
       </div>
     </div>
-    <div class="paso">
-      <div class="paso-num">🔍</div>
-      <div class="paso-texto">
-        <h3>2. Elegí el repuesto</h3>
-        <p>Buscá lo que necesitás entre todos los productos disponibles.</p>
-      </div>
+
+    <div class="qr-wrapper">
+      <div class="qr-label">ESCANEAME</div>
+      <img class="qr-img" src="qr-code.jpg" />
     </div>
-    <div class="paso">
-      <div class="paso-num">💬</div>
-      <div class="paso-texto">
-        <h3>3. Consultá por WhatsApp</h3>
-        <p>Tocá el botón verde y Jorge te responde con el precio al toque.</p>
-      </div>
+
+    <div class="wa">
+      WhatsApp: +54 9 11 5476-7247
     </div>
+
   </div>
-
-  <div class="qr-wrapper">
-    <div class="qr-label-top">Escaneame con la cámara</div>
-    <!--
-      INSTRUCCIÓN: Reemplazá "qr-code.jpg" por la ruta a tu imagen de QR.
-      Si subís este archivo junto al QR en la misma carpeta, solo cambiá el src.
-      Podés usar también el QR directamente de GitHub Pages si lo convertís a base64.
-    -->
-    <img class="qr-img" src="qr-code.jpg" alt="Código QR Repuestos de Bici Jorge" />
-    <div class="qr-logo">🚲</div>
-    <div class="qr-label-bottom">elterco2012-dev.github.io/repuestos-bici</div>
-  </div>
-
-  <div class="divider">o escribinos directo</div>
-
-  <a class="wa-numero" href="https://wa.me/5491154767247">
-    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-    +54 9 11 5476-7247
-  </a>
-
-  <div class="horario-tag">🕘 Atención: <strong>Lunes a Sábado de 9 a 18 hs</strong></div>
 </div>
-
-<button class="btn-imprimir no-print" onclick="window.print()">🖨️ Imprimir cartel</button>
 
 </body>
 </html>
