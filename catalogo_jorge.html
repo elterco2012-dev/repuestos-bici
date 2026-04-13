@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Repuestos de Bici Jorge</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --verde: #22c55e;
+    --verde-dark: #16a34a;
+    --verde-light: #dcfce7;
+    --naranja: #f97316;
+    --gris-fondo: #f8fafc;
+    --gris-card: #ffffff;
+    --gris-borde: #e2e8f0;
+    --texto: #1e293b;
+    --texto-suave: #64748b;
+    --texto-muy-suave: #94a3b8;
+    --sombra: 0 2px 12px rgba(0,0,0,0.07);
+    --radio: 16px;
+    --radio-sm: 10px;
+    --font: 'Nunito', sans-serif;
+    --wa: #25D366;
+    --wa-dark: #1ebe5d;
+  }
+
+  body {
+    font-family: var(--font);
+    background: var(--gris-fondo);
+    color: var(--texto);
+    min-height: 100vh;
+    padding-bottom: 40px;
+  }
+
+  /* HEADER */
+  .header {
+    background: #fff;
+    border-bottom: 1px solid var(--gris-borde);
+    padding: 20px 16px 16px;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 4px;
+  }
+
+  .bici-icon {
+    font-size: 28px;
+    line-height: 1;
+  }
+
+  .header h1 {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--texto);
+    letter-spacing: -0.3px;
+  }
+
+  .header h1 span {
+    color: var(--verde-dark);
+  }
+
+  .header-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 6px;
+    flex-wrap: wrap;
+  }
+
+  .badge-horario {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: #fef9c3;
+    color: #854d0e;
+    border: 1px solid #fde68a;
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .badge-lugar {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--texto-suave);
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  /* WA BANNER */
+  .wa-banner {
+    margin: 14px 16px 0;
+    background: var(--wa);
+    border-radius: var(--radio);
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.15s, transform 0.1s;
+    box-shadow: 0 4px 14px rgba(37,211,102,0.35);
+  }
+  .wa-banner:active { transform: scale(0.98); }
+  .wa-banner:hover { background: var(--wa-dark); }
+  .wa-banner svg { width: 22px; height: 22px; fill: #fff; flex-shrink: 0; }
+  .wa-banner span { color: #fff; font-size: 15px; font-weight: 700; }
+
+  /* SEARCH */
+  .search-wrap {
+    padding: 14px 16px 0;
+    position: relative;
+  }
+  .search-wrap input {
+    width: 100%;
+    padding: 11px 16px 11px 42px;
+    border: 1.5px solid var(--gris-borde);
+    border-radius: var(--radio);
+    font-family: var(--font);
+    font-size: 15px;
+    background: #fff;
+    color: var(--texto);
+    outline: none;
+    transition: border-color 0.15s;
+  }
+  .search-wrap input:focus { border-color: var(--verde); }
+  .search-wrap input::placeholder { color: var(--texto-muy-suave); }
+  .search-icon {
+    position: absolute;
+    left: 28px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--texto-muy-suave);
+    pointer-events: none;
+    margin-top: 7px;
+  }
+
+  /* CATEGORIAS */
+  .cats {
+    display: flex;
+    gap: 8px;
+    padding: 12px 16px 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .cats::-webkit-scrollbar { display: none; }
+  .cat-btn {
+    flex-shrink: 0;
+    padding: 7px 16px;
+    border-radius: 20px;
+    border: 1.5px solid var(--gris-borde);
+    font-family: var(--font);
+    font-size: 13px;
+    font-weight: 700;
+    background: #fff;
+    color: var(--texto-suave);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.15s;
+  }
+  .cat-btn.active {
+    background: var(--verde-dark);
+    color: #fff;
+    border-color: var(--verde-dark);
+  }
+
+  /* CONTADOR */
+  .result-count {
+    padding: 12px 16px 0;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--texto-muy-suave);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* GRID */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+    gap: 12px;
+    padding: 10px 16px 0;
+  }
+
+  .card {
+    background: var(--gris-card);
+    border: 1px solid var(--gris-borde);
+    border-radius: var(--radio);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.15s, transform 0.15s;
+  }
+  .card:hover {
+    box-shadow: var(--sombra);
+    transform: translateY(-2px);
+  }
+
+  .card-img {
+    width: 100%;
+    aspect-ratio: 1;
+    background: #f1f5f9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .card-img .emoji-placeholder {
+    font-size: 44px;
+    line-height: 1;
+  }
+
+  /* badge stock */
+  .badge-stock {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    border-radius: 20px;
+    padding: 3px 9px;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.3px;
+  }
+  .badge-stock.disponible {
+    background: #dcfce7;
+    color: #166534;
+  }
+  .badge-stock.encargo {
+    background: #ffedd5;
+    color: #9a3412;
+  }
+
+  .card-body {
+    padding: 10px 12px 12px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .card-name {
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--texto);
+    line-height: 1.25;
+  }
+
+  .card-desc {
+    font-size: 12px;
+    color: var(--texto-suave);
+    margin-top: 4px;
+    line-height: 1.4;
+    flex: 1;
+  }
+
+  .card-btn {
+    margin-top: 10px;
+    width: 100%;
+    padding: 8px;
+    background: var(--wa);
+    border: none;
+    border-radius: var(--radio-sm);
+    color: #fff;
+    font-family: var(--font);
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    text-decoration: none;
+    transition: background 0.15s;
+  }
+  .card-btn:hover { background: var(--wa-dark); }
+  .card-btn svg { width: 13px; height: 13px; fill: #fff; flex-shrink: 0; }
+
+  /* ENCARGO */
+  .encargo-section {
+    margin: 20px 16px 0;
+    background: #fff;
+    border: 1px solid var(--gris-borde);
+    border-radius: var(--radio);
+    padding: 18px;
+    text-align: center;
+  }
+  .encargo-section .icono { font-size: 28px; margin-bottom: 8px; }
+  .encargo-section h3 { font-size: 15px; font-weight: 800; color: var(--texto); }
+  .encargo-section p { font-size: 13px; color: var(--texto-suave); margin-top: 4px; line-height: 1.5; }
+  .encargo-section a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 14px;
+    background: var(--wa);
+    color: #fff;
+    font-family: var(--font);
+    font-size: 14px;
+    font-weight: 700;
+    padding: 10px 22px;
+    border-radius: var(--radio-sm);
+    text-decoration: none;
+    transition: background 0.15s;
+  }
+  .encargo-section a:hover { background: var(--wa-dark); }
+  .encargo-section a svg { width: 16px; height: 16px; fill: #fff; }
+
+  /* VACIO */
+  .empty {
+    text-align: center;
+    padding: 48px 16px;
+    color: var(--texto-suave);
+  }
+  .empty .icono { font-size: 40px; margin-bottom: 12px; }
+  .empty p { font-size: 14px; }
+
+  /* FOOTER */
+  .footer {
+    text-align: center;
+    padding: 24px 16px 0;
+    font-size: 12px;
+    color: var(--texto-muy-suave);
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <span class="bici-icon">🚲</span>
+    <h1>Repuestos de Bici <span>Jorge</span></h1>
+  </div>
+  <div class="header-info">
+    <span class="badge-horario">🕘 Lun a Sáb · 9 a 18 hs</span>
+    <span class="badge-lugar">📍 Virrey del Pino</span>
+  </div>
+</div>
+
+<a class="wa-banner" href="https://wa.me/5491154767247?text=Hola%20Jorge!%20Vi%20tu%20cat%C3%A1logo%20y%20quiero%20consultar%20algo." target="_blank">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <span>Escribile a Jorge por WhatsApp</span>
+</a>
+
+<div class="search-wrap">
+  <span class="search-icon">🔍</span>
+  <input type="text" id="searchInput" placeholder="Buscar repuesto..." oninput="render()" />
+</div>
+
+<div class="cats" id="cats"></div>
+
+<div class="result-count" id="count"></div>
+
+<div class="grid" id="grid"></div>
+
+<div class="encargo-section">
+  <div class="icono">📦</div>
+  <h3>¿No encontrás lo que necesitás?</h3>
+  <p>Jorge puede conseguir repuestos por encargo.<br>Consultale y en una semana lo tiene disponible.</p>
+  <a href="https://wa.me/5491154767247?text=Hola%20Jorge!%20Necesito%20un%20repuesto%20que%20no%20est%C3%A1%20en%20el%20cat%C3%A1logo.%20%C2%BFPod%C3%A9s%20conseguirme%3A%20" target="_blank">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Consultar por encargo
+  </a>
+</div>
+
+<div class="footer">
+  <p>Repuestos de Bici Jorge · Virrey del Pino, Buenos Aires</p>
+</div>
+
+<script>
+const WA = '5491154767247';
+const WA_SVG = `<svg viewBox="0 0 24 24" fill="white" width="13" height="13"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>`;
+
+// PRODUCTOS
+// Para agregar una foto real: reemplazá el valor de "foto" con la ruta de la imagen
+// Ejemplo: foto: 'fotos/cadena.jpg'
+// Si no tiene foto, dejá foto: null y se muestra el emoji
+const productos = [
+  { nombre: 'Cubierta', desc: 'Varios tamaños disponibles', cat: 'ruedas', emoji: '⚫', foto: null, stock: 'disponible' },
+  { nombre: 'Cámara de aire', desc: 'Universal para rodado 26 y 29', cat: 'ruedas', emoji: '🔘', foto: null, stock: 'disponible' },
+  { nombre: 'Parche', desc: 'Kit de reparación rápida', cat: 'ruedas', emoji: '🩹', foto: null, stock: 'disponible' },
+  { nombre: 'Inflador', desc: 'Manual tipo bomba', cat: 'ruedas', emoji: '💨', foto: null, stock: 'disponible' },
+  { nombre: 'Eje de rueda', desc: 'Para rueda delantera y trasera', cat: 'ruedas', emoji: '🔩', foto: null, stock: 'disponible' },
+  { nombre: 'Cadena', desc: 'Para bici de 1 a 7 velocidades', cat: 'transmision', emoji: '⛓️', foto: null, stock: 'disponible' },
+  { nombre: 'Pedal', desc: 'Par de pedales con rosca', cat: 'transmision', emoji: '🦶', foto: null, stock: 'disponible' },
+  { nombre: 'Piñón', desc: 'Compatible con cambio Shimano', cat: 'transmision', emoji: '⚙️', foto: null, stock: 'encargo' },
+  { nombre: 'Asiento', desc: 'Sillín cómodo acolchado', cat: 'asiento', emoji: '🪑', foto: null, stock: 'disponible' },
+  { nombre: 'Silla porta niño', desc: 'Para atrás del cuadro', cat: 'asiento', emoji: '👶', foto: null, stock: 'disponible' },
+  { nombre: 'Tija de sillín', desc: 'Vástago ajustable', cat: 'asiento', emoji: '📏', foto: null, stock: 'disponible' },
+  { nombre: 'Manubrio', desc: 'Recto, varios anchos', cat: 'otros', emoji: '🔄', foto: null, stock: 'disponible' },
+  { nombre: 'Pastilla de freno', desc: 'Para freno tipo V-brake', cat: 'frenos', emoji: '🛑', foto: null, stock: 'disponible' },
+  { nombre: 'Cable de freno', desc: 'Con funda incluida', cat: 'frenos', emoji: '〰️', foto: null, stock: 'disponible' },
+  { nombre: 'Grasa', desc: 'Para cadena y articulaciones', cat: 'mantenimiento', emoji: '🛢️', foto: null, stock: 'disponible' },
+  { nombre: 'Aceite lubricante', desc: 'Frasco aplicador 100ml', cat: 'mantenimiento', emoji: '💧', foto: null, stock: 'disponible' },
+];
+
+const categorias = [
+  { id: 'todos', label: 'Todos' },
+  { id: 'ruedas', label: '🔵 Ruedas' },
+  { id: 'transmision', label: '⚙️ Transmisión' },
+  { id: 'frenos', label: '🛑 Frenos' },
+  { id: 'asiento', label: '🪑 Asiento' },
+  { id: 'mantenimiento', label: '🛢️ Mantenimiento' },
+  { id: 'otros', label: '🔧 Otros' },
+];
+
+let catActual = 'todos';
+
+function buildCats() {
+  const wrap = document.getElementById('cats');
+  wrap.innerHTML = categorias.map(c =>
+    `<button class="cat-btn${c.id === catActual ? ' active' : ''}" onclick="setCat('${c.id}')">${c.label}</button>`
+  ).join('');
+}
+
+function setCat(id) {
+  catActual = id;
+  buildCats();
+  render();
+}
+
+function waLink(nombre) {
+  const msg = encodeURIComponent('Hola Jorge! Quiero consultar el precio de: ' + nombre);
+  return `https://wa.me/${WA}?text=${msg}`;
+}
+
+function render() {
+  const q = document.getElementById('searchInput').value.toLowerCase().trim();
+  const filtered = productos.filter(p => {
+    const matchCat = catActual === 'todos' || p.cat === catActual;
+    const matchQ = !q || p.nombre.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q);
+    return matchCat && matchQ;
+  });
+
+  document.getElementById('count').textContent =
+    filtered.length === productos.length
+      ? `${productos.length} productos`
+      : `${filtered.length} de ${productos.length} productos`;
+
+  const grid = document.getElementById('grid');
+  if (filtered.length === 0) {
+    grid.innerHTML = `<div class="empty" style="grid-column:1/-1"><div class="icono">🔍</div><p>No encontramos ese repuesto.<br>Podés consultarle a Jorge directamente.</p></div>`;
+    return;
+  }
+
+  grid.innerHTML = filtered.map(p => {
+    const stockLabel = p.stock === 'disponible' ? 'En stock' : 'Por encargo';
+    const imgHtml = p.foto
+      ? `<img src="${p.foto}" alt="${p.nombre}" loading="lazy" />`
+      : `<span class="emoji-placeholder">${p.emoji}</span>`;
+    return `
+      <div class="card">
+        <div class="card-img">
+          ${imgHtml}
+          <span class="badge-stock ${p.stock}">${stockLabel}</span>
+        </div>
+        <div class="card-body">
+          <div class="card-name">${p.nombre}</div>
+          <div class="card-desc">${p.desc}</div>
+          <a class="card-btn" href="${waLink(p.nombre)}" target="_blank">
+            ${WA_SVG} Consultar precio
+          </a>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+buildCats();
+render();
+</script>
+</body>
+</html>
