@@ -11,8 +11,6 @@
   :root {
     --verde: #22c55e;
     --verde-dark: #16a34a;
-    --verde-light: #dcfce7;
-    --naranja: #f97316;
     --gris-fondo: #f8fafc;
     --gris-card: #ffffff;
     --gris-borde: #e2e8f0;
@@ -432,17 +430,17 @@ const productos = [
   { nombre: 'Parche', desc: 'Reparación rápida', cat: 'ruedas', emoji: '🩹', foto: 'fotos/Parche.jpg', stock: 'disponible' },
   { nombre: 'Llanta', desc: 'Para varias bicicletas', cat: 'ruedas', emoji: '⭕', foto: 'fotos/Llanta.jpg', stock: 'disponible' },
   { nombre: 'Rayos', desc: 'Con niples para la rueda', cat: 'ruedas', emoji: '📏', foto: 'fotos/Rayos.jpg', stock: 'disponible' },
-  { nombre: 'Rueda playera', desc: 'Rueda armada', cat: 'ruedas', emoji: '🛞', foto: 'fotos/Guardabarro.jpg', stock: 'disponible' },
-  { nombre: 'Rueda todo terreno', desc: 'Delantera y trasera', cat: 'ruedas', emoji: '🛞', foto: 'fotos/Guardabarro.jpg', stock: 'disponible' },
+  { nombre: 'Rueda playera', desc: 'Rueda armada', cat: 'ruedas', emoji: '🛞', foto: null, stock: 'disponible' },
+  { nombre: 'Rueda todo terreno', desc: 'Delantera y trasera', cat: 'ruedas', emoji: '🛞', foto: null, stock: 'disponible' },
   { nombre: 'Eje delantero', desc: 'Fino o grueso', cat: 'ruedas', emoji: '🔩', foto: 'fotos/Eje.jpg', stock: 'disponible' },
   { nombre: 'Eje trasero', desc: 'Para varias bicis', cat: 'ruedas', emoji: '🔩', foto: null, stock: 'disponible' },
   { nombre: 'Tuercas de eje', desc: 'Delantero y trasero', cat: 'ruedas', emoji: '🔩', foto: null, stock: 'disponible' },
-  { nombre: 'Válvulas', desc: 'Y repuestos para cámara', cat: 'ruedas', emoji: '📍', foto: 'fotos/Camara.jpg', stock: 'disponible' },
-  { nombre: 'Gomines', desc: 'Para válvula', cat: 'ruedas', emoji: '🟡', foto: 'fotos/Camara.jpg', stock: 'disponible' },
+  { nombre: 'Válvulas', desc: 'Y repuestos para cámara', cat: 'ruedas', emoji: '📍', foto: null, stock: 'disponible' },
+  { nombre: 'Gomines', desc: 'Para válvula', cat: 'ruedas', emoji: '🟡', foto: null, stock: 'disponible' },
 
   { nombre: 'Cadena', desc: 'Paso fino o grueso', cat: 'pedaleo', emoji: '⛓️', foto: 'fotos/Cadena.jpg', stock: 'disponible' },
   { nombre: 'Plato', desc: '46 dientes y otros', cat: 'pedaleo', emoji: '⚙️', foto: 'fotos/Plato.jpg', stock: 'disponible' },
-  { nombre: 'Plato con engranaje', desc: 'Para playera', cat: 'pedaleo', emoji: '⚙️', foto: null, stock: 'disponible' },
+  { nombre: 'Plato con engranaje', desc: 'Para playera', cat: 'pedaleo', emoji: '⚙️', foto: 'fotos/Plato.jpg', stock: 'disponible' },
   { nombre: 'Pedales', desc: 'Playero y todo terreno', cat: 'pedaleo', emoji: '🦶', foto: 'fotos/Pedales.jpg', stock: 'disponible' },
   { nombre: 'Pedalines', desc: 'Par de pedales plásticos', cat: 'pedaleo', emoji: '🦶', foto: 'fotos/Pedales.jpg', stock: 'disponible' },
   { nombre: 'Piñón', desc: 'Para bici con cambio', cat: 'pedaleo', emoji: '⚙️', foto: 'fotos/Piñon 7 corona.jpg', stock: 'encargo' },
@@ -461,21 +459,22 @@ const productos = [
   { nombre: 'Manija de freno', desc: 'Para playera y otras', cat: 'frenos', emoji: '✋', foto: 'fotos/Manija freno.jpg', stock: 'disponible' },
   { nombre: 'Patines de freno', desc: 'Con vástago', cat: 'frenos', emoji: '🛑', foto: 'fotos/Patin freno.jpg', stock: 'disponible' },
   { nombre: 'Patines de herradura', desc: 'Repuesto de freno', cat: 'frenos', emoji: '🛑', foto: null, stock: 'disponible' },
-  { nombre: 'Herradura de freno', desc: 'Para bici común y todo terreno', cat: 'frenos', emoji: '🔧', foto: 'fotos/C.jpg', stock: 'disponible' }
+  { nombre: 'Herradura de freno', desc: 'Para bici común y todo terreno', cat: 'frenos', emoji: '🔧', foto: 'fotos/Herradura freno(1).jpg', stock: 'disponible' },
 
   { nombre: 'Asiento', desc: 'Deportivo, playero y rodado 20', cat: 'manejo', emoji: '🪑', foto: 'fotos/Asiento.jpg', stock: 'disponible' },
   { nombre: 'Caño de asiento', desc: 'Para varias medidas', cat: 'manejo', emoji: '📏', foto: null, stock: 'disponible' },
   { nombre: 'Manubrio', desc: 'Playero y todo terreno', cat: 'manejo', emoji: '🔄', foto: 'fotos/Manubrio.jpg', stock: 'disponible' },
   { nombre: 'Puños', desc: 'Cortos y de colores', cat: 'manejo', emoji: '✊', foto: 'fotos/Puño grip.jpg', stock: 'disponible' },
   { nombre: 'Horquilla', desc: 'Todo terreno y balancín', cat: 'manejo', emoji: '🔱', foto: 'fotos/Horquilla con suspension.jpg', stock: 'disponible' },
-  { nombre: 'Juego de dirección', desc: 'Para la parte del manubrio', cat: 'manejo', emoji: '🧩', foto: 'fotos/Juego de direccion.jpg', stock: 'disponible' },
-  { nombre: 'Stem', desc: 'Soporte del manubrio', cat: 'manejo', emoji: '🔩', foto: 'fotos/Esten.jpg', stock: 'disponible' },
-  { nombre: 'Jaulita de dirección', desc: 'Repuesto de dirección', cat: 'manejo', emoji: '🧩', foto: 'fotos/Bolillero.jpg', stock: 'disponible' },
   { nombre: 'Horquilla playera', desc: 'Para bici playera', cat: 'manejo', emoji: '🔱', foto: 'fotos/Horquilla para playera.jpg', stock: 'disponible' },
+  { nombre: 'Juego de dirección', desc: 'Para la parte del manubrio', cat: 'manejo', emoji: '🧩', foto: 'fotos/Juego de direccion.jpg', stock: 'disponible' },
+  { nombre: 'Jaulita de dirección', desc: 'Repuesto de dirección', cat: 'manejo', emoji: '🧩', foto: 'fotos/Bolillero.jpg', stock: 'disponible' },
+  { nombre: 'Stem', desc: 'Soporte del manubrio', cat: 'manejo', emoji: '🔩', foto: 'fotos/Esten.jpg', stock: 'disponible' },
+  { nombre: 'Espejo', desc: 'Para ver atrás', cat: 'manejo', emoji: '🪞', foto: 'fotos/Espejos.jpg', stock: 'disponible' },
 
   { nombre: 'Inflador corto', desc: 'Manual y práctico', cat: 'varios', emoji: '💨', foto: 'fotos/Inflador.jpg', stock: 'disponible' },
   { nombre: 'Inflador de taller', desc: 'Para inflado rápido', cat: 'varios', emoji: '🛠️', foto: 'fotos/Inflador de taller(1).jpg', stock: 'disponible' },
-  { nombre: 'Aceite lubricante', desc: 'Para cadena y piezas', cat: 'varios', emoji: '💧', foto: 'fotos/Caramañola.jpg', stock: 'disponible' },
+  { nombre: 'Aceite lubricante', desc: 'Para cadena y piezas', cat: 'varios', emoji: '💧', foto: null, stock: 'disponible' },
   { nombre: 'Grasa', desc: 'Para mantenimiento', cat: 'varios', emoji: '🛢️', foto: 'fotos/Grasa.jpg', stock: 'disponible' },
   { nombre: 'Porta equipaje', desc: 'Para bici de dama', cat: 'varios', emoji: '📦', foto: 'fotos/Porta paquete.jpg', stock: 'disponible' },
   { nombre: 'Portacaramañola', desc: 'Soporte para botella', cat: 'varios', emoji: '🥤', foto: 'fotos/Portacaramañola.jpg', stock: 'disponible' },
