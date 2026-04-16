@@ -35,7 +35,6 @@
     padding-bottom: 40px;
   }
 
-  /* HEADER */
   .header {
     background: #fff;
     border-bottom: 1px solid var(--gris-borde);
@@ -54,10 +53,7 @@
     margin-bottom: 4px;
   }
 
-  .bici-icon {
-    font-size: 28px;
-    line-height: 1;
-  }
+  .bici-icon { font-size: 28px; line-height: 1; }
 
   .header h1 {
     font-size: 22px;
@@ -66,8 +62,12 @@
     letter-spacing: -0.3px;
   }
 
-  .header h1 span {
-    color: var(--verde-dark);
+  .header h1 span { color: var(--verde-dark); }
+
+  .header-sub {
+    font-size: 13px;
+    color: var(--texto-suave);
+    margin-top: 4px;
   }
 
   .header-info {
@@ -75,7 +75,7 @@
     align-items: center;
     justify-content: center;
     gap: 16px;
-    margin-top: 6px;
+    margin-top: 8px;
     flex-wrap: wrap;
   }
 
@@ -101,7 +101,6 @@
     font-weight: 600;
   }
 
-  /* WA BANNER */
   .wa-banner {
     margin: 14px 16px 0;
     background: var(--wa);
@@ -116,12 +115,12 @@
     transition: background 0.15s, transform 0.1s;
     box-shadow: 0 4px 14px rgba(37,211,102,0.35);
   }
+
   .wa-banner:active { transform: scale(0.98); }
   .wa-banner:hover { background: var(--wa-dark); }
   .wa-banner svg { width: 22px; height: 22px; fill: #fff; flex-shrink: 0; }
   .wa-banner span { color: #fff; font-size: 15px; font-weight: 700; }
 
-  /* REPARACIONES */
   .reparaciones {
     margin: 12px 16px 0;
     background: #eff6ff;
@@ -132,15 +131,16 @@
     align-items: center;
     gap: 12px;
   }
+
   .reparaciones .rep-icon { font-size: 26px; flex-shrink: 0; }
   .reparaciones .rep-texto h3 { font-size: 14px; font-weight: 800; color: #1e40af; }
   .reparaciones .rep-texto p { font-size: 12px; color: #3b82f6; margin-top: 2px; line-height: 1.4; }
 
-  /* SEARCH */
   .search-wrap {
     padding: 14px 16px 0;
     position: relative;
   }
+
   .search-wrap input {
     width: 100%;
     padding: 11px 16px 11px 42px;
@@ -153,8 +153,10 @@
     outline: none;
     transition: border-color 0.15s;
   }
+
   .search-wrap input:focus { border-color: var(--verde); }
   .search-wrap input::placeholder { color: var(--texto-muy-suave); }
+
   .search-icon {
     position: absolute;
     left: 28px;
@@ -165,7 +167,6 @@
     margin-top: 7px;
   }
 
-  /* CATEGORIAS */
   .cats {
     display: flex;
     gap: 8px;
@@ -173,7 +174,9 @@
     overflow-x: auto;
     scrollbar-width: none;
   }
+
   .cats::-webkit-scrollbar { display: none; }
+
   .cat-btn {
     flex-shrink: 0;
     padding: 7px 16px;
@@ -188,13 +191,13 @@
     white-space: nowrap;
     transition: all 0.15s;
   }
+
   .cat-btn.active {
     background: var(--verde-dark);
     color: #fff;
     border-color: var(--verde-dark);
   }
 
-  /* CONTADOR */
   .result-count {
     padding: 12px 16px 0;
     font-size: 12px;
@@ -204,7 +207,6 @@
     letter-spacing: 0.5px;
   }
 
-  /* GRID */
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
@@ -221,6 +223,7 @@
     flex-direction: column;
     transition: box-shadow 0.15s, transform 0.15s;
   }
+
   .card:hover {
     box-shadow: var(--sombra);
     transform: translateY(-2px);
@@ -244,12 +247,8 @@
     display: block;
   }
 
-  .card-img .emoji-placeholder {
-    font-size: 44px;
-    line-height: 1;
-  }
+  .card-img .emoji-placeholder { font-size: 44px; line-height: 1; }
 
-  /* badge stock */
   .badge-stock {
     position: absolute;
     top: 8px;
@@ -260,10 +259,12 @@
     font-weight: 800;
     letter-spacing: 0.3px;
   }
+
   .badge-stock.disponible {
     background: #dcfce7;
     color: #166534;
   }
+
   .badge-stock.encargo {
     background: #ffedd5;
     color: #9a3412;
@@ -310,10 +311,10 @@
     text-decoration: none;
     transition: background 0.15s;
   }
+
   .card-btn:hover { background: var(--wa-dark); }
   .card-btn svg { width: 13px; height: 13px; fill: #fff; flex-shrink: 0; }
 
-  /* ENCARGO */
   .encargo-section {
     margin: 20px 16px 0;
     background: #fff;
@@ -322,9 +323,11 @@
     padding: 18px;
     text-align: center;
   }
+
   .encargo-section .icono { font-size: 28px; margin-bottom: 8px; }
   .encargo-section h3 { font-size: 15px; font-weight: 800; color: var(--texto); }
   .encargo-section p { font-size: 13px; color: var(--texto-suave); margin-top: 4px; line-height: 1.5; }
+
   .encargo-section a {
     display: inline-flex;
     align-items: center;
@@ -340,19 +343,19 @@
     text-decoration: none;
     transition: background 0.15s;
   }
+
   .encargo-section a:hover { background: var(--wa-dark); }
   .encargo-section a svg { width: 16px; height: 16px; fill: #fff; }
 
-  /* VACIO */
   .empty {
     text-align: center;
     padding: 48px 16px;
     color: var(--texto-suave);
   }
+
   .empty .icono { font-size: 40px; margin-bottom: 12px; }
   .empty p { font-size: 14px; }
 
-  /* FOOTER */
   .footer {
     text-align: center;
     padding: 24px 16px 0;
@@ -368,6 +371,7 @@
     <span class="bici-icon">🚲</span>
     <h1>Repuestos de Bici <span>Jorge</span></h1>
   </div>
+  <p class="header-sub">Repuestos y arreglos rápidos para tu bici 🚲</p>
   <div class="header-info">
     <span class="badge-horario">🕘 Lun a Sáb · 9 a 18 hs</span>
     <span class="badge-lugar">📍 Virrey del Pino</span>
@@ -389,13 +393,11 @@
 
 <div class="search-wrap">
   <span class="search-icon">🔍</span>
-  <input type="text" id="searchInput" placeholder="Buscar repuesto..." oninput="render()" />
+  <input type="text" id="searchInput" placeholder="Ej: cámara, cadena, freno..." oninput="render()" />
 </div>
 
 <div class="cats" id="cats"></div>
-
 <div class="result-count" id="count"></div>
-
 <div class="grid" id="grid"></div>
 
 <div class="encargo-section">
@@ -416,37 +418,88 @@
 const WA = '5491154767247';
 const WA_SVG = `<svg viewBox="0 0 24 24" fill="white" width="13" height="13"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>`;
 
-// PRODUCTOS
-// Para agregar una foto real: reemplazá el valor de "foto" con la ruta de la imagen
-// Ejemplo: foto: 'fotos/cadena.jpg'
-// Si no tiene foto, dejá foto: null y se muestra el emoji
 const productos = [
-  { nombre: 'Cubierta', desc: 'Varios tamaños disponibles', cat: 'ruedas', emoji: '⚫', foto: null, stock: 'disponible' },
-  { nombre: 'Cámara de aire', desc: 'Universal para rodado 26 y 29', cat: 'ruedas', emoji: '🔘', foto: null, stock: 'disponible' },
-  { nombre: 'Parche', desc: 'Kit de reparación rápida', cat: 'ruedas', emoji: '🩹', foto: null, stock: 'disponible' },
-  { nombre: 'Inflador', desc: 'Manual tipo bomba', cat: 'ruedas', emoji: '💨', foto: null, stock: 'disponible' },
-  { nombre: 'Eje de rueda', desc: 'Para rueda delantera y trasera', cat: 'ruedas', emoji: '🔩', foto: null, stock: 'disponible' },
-  { nombre: 'Cadena', desc: 'Para bici de 1 a 7 velocidades', cat: 'transmision', emoji: '⛓️', foto: null, stock: 'disponible' },
-  { nombre: 'Pedal', desc: 'Par de pedales con rosca', cat: 'transmision', emoji: '🦶', foto: null, stock: 'disponible' },
-  { nombre: 'Piñón', desc: 'Compatible con cambio Shimano', cat: 'transmision', emoji: '⚙️', foto: null, stock: 'encargo' },
-  { nombre: 'Asiento', desc: 'Sillín cómodo acolchado', cat: 'asiento', emoji: '🪑', foto: null, stock: 'disponible' },
-  { nombre: 'Silla porta niño', desc: 'Para atrás del cuadro', cat: 'asiento', emoji: '👶', foto: null, stock: 'disponible' },
-  { nombre: 'Tija de sillín', desc: 'Vástago ajustable', cat: 'asiento', emoji: '📏', foto: null, stock: 'disponible' },
-  { nombre: 'Manubrio', desc: 'Recto, varios anchos', cat: 'otros', emoji: '🔄', foto: null, stock: 'disponible' },
-  { nombre: 'Pastilla de freno', desc: 'Para freno tipo V-brake', cat: 'frenos', emoji: '🛑', foto: null, stock: 'disponible' },
-  { nombre: 'Cable de freno', desc: 'Con funda incluida', cat: 'frenos', emoji: '〰️', foto: null, stock: 'disponible' },
-  { nombre: 'Grasa', desc: 'Para cadena y articulaciones', cat: 'mantenimiento', emoji: '🛢️', foto: null, stock: 'disponible' },
-  { nombre: 'Aceite lubricante', desc: 'Frasco aplicador 100ml', cat: 'mantenimiento', emoji: '💧', foto: null, stock: 'disponible' },
+  { nombre: 'Cámara de aire', desc: 'Para varios rodados', cat: 'basico', emoji: '🔘', foto: 'fotos/Camara.jpg', stock: 'disponible' },
+  { nombre: 'Parche', desc: 'Para pinchaduras', cat: 'basico', emoji: '🩹', foto: 'fotos/Kit parche y solucion.jpg', stock: 'disponible' },
+  { nombre: 'Cubierta', desc: 'Lisas y con taco', cat: 'basico', emoji: '⚫', foto: 'fotos/Cubierta.jpg', stock: 'disponible' },
+  { nombre: 'Cadena', desc: 'Para bici común y con cambio', cat: 'basico', emoji: '⛓️', foto: 'fotos/Cadena.jpg', stock: 'disponible' },
+  { nombre: 'Cable de freno', desc: 'Delantero o trasero', cat: 'basico', emoji: '〰️', foto: 'fotos/C.jpg', stock: 'disponible' },
+  { nombre: 'Asiento', desc: 'Playero, deportivo y rodado 20', cat: 'basico', emoji: '🪑', foto: 'fotos/Asiento.jpg', stock: 'disponible' },
+
+  { nombre: 'Cubierta', desc: 'Rodado 16 al 29', cat: 'ruedas', emoji: '⚫', foto: 'fotos/Cubierta.jpg', stock: 'disponible' },
+  { nombre: 'Cámara de aire', desc: 'Rodado 16 al 29', cat: 'ruedas', emoji: '🔘', foto: 'fotos/Camara.jpg', stock: 'disponible' },
+  { nombre: 'Parche estrella', desc: 'Número 3 y TG3', cat: 'ruedas', emoji: '🩹', foto: 'fotos/Parche.jpg', stock: 'disponible' },
+  { nombre: 'Parche', desc: 'Reparación rápida', cat: 'ruedas', emoji: '🩹', foto: 'fotos/Parche.jpg', stock: 'disponible' },
+  { nombre: 'Llanta', desc: 'Para varias bicicletas', cat: 'ruedas', emoji: '⭕', foto: 'fotos/Llanta.jpg', stock: 'disponible' },
+  { nombre: 'Rayos', desc: 'Con niples para la rueda', cat: 'ruedas', emoji: '📏', foto: 'fotos/Rayos.jpg', stock: 'disponible' },
+  { nombre: 'Rueda playera', desc: 'Rueda armada', cat: 'ruedas', emoji: '🛞', foto: 'fotos/Guardabarro.jpg', stock: 'disponible' },
+  { nombre: 'Rueda todo terreno', desc: 'Delantera y trasera', cat: 'ruedas', emoji: '🛞', foto: 'fotos/Guardabarro.jpg', stock: 'disponible' },
+  { nombre: 'Eje delantero', desc: 'Fino o grueso', cat: 'ruedas', emoji: '🔩', foto: 'fotos/Eje.jpg', stock: 'disponible' },
+  { nombre: 'Eje trasero', desc: 'Para varias bicis', cat: 'ruedas', emoji: '🔩', foto: null, stock: 'disponible' },
+  { nombre: 'Tuercas de eje', desc: 'Delantero y trasero', cat: 'ruedas', emoji: '🔩', foto: null, stock: 'disponible' },
+  { nombre: 'Válvulas', desc: 'Y repuestos para cámara', cat: 'ruedas', emoji: '📍', foto: 'fotos/Camara.jpg', stock: 'disponible' },
+  { nombre: 'Gomines', desc: 'Para válvula', cat: 'ruedas', emoji: '🟡', foto: 'fotos/Camara.jpg', stock: 'disponible' },
+
+  { nombre: 'Cadena', desc: 'Paso fino o grueso', cat: 'pedaleo', emoji: '⛓️', foto: 'fotos/Cadena.jpg', stock: 'disponible' },
+  { nombre: 'Plato', desc: '46 dientes y otros', cat: 'pedaleo', emoji: '⚙️', foto: 'fotos/Plato.jpg', stock: 'disponible' },
+  { nombre: 'Plato con engranaje', desc: 'Para playera', cat: 'pedaleo', emoji: '⚙️', foto: null, stock: 'disponible' },
+  { nombre: 'Pedales', desc: 'Playero y todo terreno', cat: 'pedaleo', emoji: '🦶', foto: 'fotos/Pedales.jpg', stock: 'disponible' },
+  { nombre: 'Pedalines', desc: 'Par de pedales plásticos', cat: 'pedaleo', emoji: '🦶', foto: 'fotos/Pedales.jpg', stock: 'disponible' },
+  { nombre: 'Piñón', desc: 'Para bici con cambio', cat: 'pedaleo', emoji: '⚙️', foto: 'fotos/Piñon 7 corona.jpg', stock: 'encargo' },
+  { nombre: 'Piñón simple', desc: 'Para bici común', cat: 'pedaleo', emoji: '⚙️', foto: 'fotos/Piñon.jpg', stock: 'disponible' },
+  { nombre: 'Eje de caja', desc: 'Para caja pedalera', cat: 'pedaleo', emoji: '🔩', foto: 'fotos/Eje caja.jpg', stock: 'disponible' },
+  { nombre: 'Caja playera', desc: 'Repuesto de caja', cat: 'pedaleo', emoji: '🧩', foto: 'fotos/Cubeta caja.jpg', stock: 'disponible' },
+  { nombre: 'Caja todo terreno', desc: 'Repuesto de caja', cat: 'pedaleo', emoji: '🧩', foto: null, stock: 'disponible' },
+  { nombre: 'Chavetas', desc: 'Para ejes y plato', cat: 'pedaleo', emoji: '📌', foto: null, stock: 'disponible' },
+  { nombre: 'Eje para cambio', desc: 'Para bici con cambios', cat: 'pedaleo', emoji: '🔩', foto: null, stock: 'disponible' },
+  { nombre: 'Eje para masa contra pedal', desc: 'Repuesto de masa', cat: 'pedaleo', emoji: '🔩', foto: null, stock: 'disponible' },
+  { nombre: 'Manija de cambio', desc: 'Para bici con cambios', cat: 'pedaleo', emoji: '🎛️', foto: 'fotos/Manija de cambio.jpg', stock: 'disponible' },
+
+  { nombre: 'Cable de freno', desc: 'Delantero o trasero', cat: 'frenos', emoji: '〰️', foto: 'fotos/C.jpg', stock: 'disponible' },
+  { nombre: 'Funda de freno', desc: 'Para proteger el cable', cat: 'frenos', emoji: '➖', foto: 'fotos/Funda freno.jpg', stock: 'disponible' },
+  { nombre: 'Prensa cable', desc: 'Regulador y sujeta cable', cat: 'frenos', emoji: '📎', foto: null, stock: 'disponible' },
+  { nombre: 'Manija de freno', desc: 'Para playera y otras', cat: 'frenos', emoji: '✋', foto: 'fotos/Manija freno.jpg', stock: 'disponible' },
+  { nombre: 'Patines de freno', desc: 'Con vástago', cat: 'frenos', emoji: '🛑', foto: 'fotos/Patin freno.jpg', stock: 'disponible' },
+  { nombre: 'Patines de herradura', desc: 'Repuesto de freno', cat: 'frenos', emoji: '🛑', foto: null, stock: 'disponible' },
+  { nombre: 'Herradura de freno', desc: 'Para bici común y todo terreno', cat: 'frenos', emoji: '🔧', foto: 'fotos/C.jpg', stock: 'disponible' }
+
+  { nombre: 'Asiento', desc: 'Deportivo, playero y rodado 20', cat: 'manejo', emoji: '🪑', foto: 'fotos/Asiento.jpg', stock: 'disponible' },
+  { nombre: 'Caño de asiento', desc: 'Para varias medidas', cat: 'manejo', emoji: '📏', foto: null, stock: 'disponible' },
+  { nombre: 'Manubrio', desc: 'Playero y todo terreno', cat: 'manejo', emoji: '🔄', foto: 'fotos/Manubrio.jpg', stock: 'disponible' },
+  { nombre: 'Puños', desc: 'Cortos y de colores', cat: 'manejo', emoji: '✊', foto: 'fotos/Puño grip.jpg', stock: 'disponible' },
+  { nombre: 'Horquilla', desc: 'Todo terreno y balancín', cat: 'manejo', emoji: '🔱', foto: 'fotos/Horquilla con suspension.jpg', stock: 'disponible' },
+  { nombre: 'Juego de dirección', desc: 'Para la parte del manubrio', cat: 'manejo', emoji: '🧩', foto: 'fotos/Juego de direccion.jpg', stock: 'disponible' },
+  { nombre: 'Stem', desc: 'Soporte del manubrio', cat: 'manejo', emoji: '🔩', foto: 'fotos/Esten.jpg', stock: 'disponible' },
+  { nombre: 'Jaulita de dirección', desc: 'Repuesto de dirección', cat: 'manejo', emoji: '🧩', foto: 'fotos/Bolillero.jpg', stock: 'disponible' },
+  { nombre: 'Horquilla playera', desc: 'Para bici playera', cat: 'manejo', emoji: '🔱', foto: 'fotos/Horquilla para playera.jpg', stock: 'disponible' },
+
+  { nombre: 'Inflador corto', desc: 'Manual y práctico', cat: 'varios', emoji: '💨', foto: 'fotos/Inflador.jpg', stock: 'disponible' },
+  { nombre: 'Inflador de taller', desc: 'Para inflado rápido', cat: 'varios', emoji: '🛠️', foto: 'fotos/Inflador de taller(1).jpg', stock: 'disponible' },
+  { nombre: 'Aceite lubricante', desc: 'Para cadena y piezas', cat: 'varios', emoji: '💧', foto: 'fotos/Caramañola.jpg', stock: 'disponible' },
+  { nombre: 'Grasa', desc: 'Para mantenimiento', cat: 'varios', emoji: '🛢️', foto: 'fotos/Grasa.jpg', stock: 'disponible' },
+  { nombre: 'Porta equipaje', desc: 'Para bici de dama', cat: 'varios', emoji: '📦', foto: 'fotos/Porta paquete.jpg', stock: 'disponible' },
+  { nombre: 'Portacaramañola', desc: 'Soporte para botella', cat: 'varios', emoji: '🥤', foto: 'fotos/Portacaramañola.jpg', stock: 'disponible' },
+  { nombre: 'Sillita para niño', desc: 'Con cinturón', cat: 'varios', emoji: '👶', foto: 'fotos/Silla para niños.jpg', stock: 'disponible' },
+  { nombre: 'Canasto', desc: 'Canasto de alambre negro', cat: 'varios', emoji: '🧺', foto: 'fotos/Canasto.jpg', stock: 'disponible' },
+  { nombre: 'Linga', desc: 'Con llave para atar la bici', cat: 'varios', emoji: '🔒', foto: 'fotos/Linga.jpg', stock: 'disponible' },
+  { nombre: 'Luz delantera', desc: 'Para ver mejor de noche', cat: 'varios', emoji: '🔦', foto: 'fotos/Luz delantera.jpg', stock: 'disponible' },
+  { nombre: 'Luz trasera', desc: 'Para que te vean atrás', cat: 'varios', emoji: '🔴', foto: 'fotos/Luz trasera.jpg', stock: 'disponible' },
+  { nombre: 'Reflector', desc: 'Delantero y trasero', cat: 'varios', emoji: '🟥', foto: 'fotos/Reflector.jpg', stock: 'disponible' },
+  { nombre: 'Timbre', desc: 'Campanita para bicicleta', cat: 'varios', emoji: '🔔', foto: 'fotos/Timbre.jpg', stock: 'disponible' },
+  { nombre: 'Patita', desc: 'Para apoyar la bicicleta', cat: 'varios', emoji: '🦵', foto: 'fotos/Patita.jpg', stock: 'disponible' },
+  { nombre: 'Cuelga bicicleta', desc: 'Gancho para colgar la bici', cat: 'varios', emoji: '🪝', foto: 'fotos/Cuelga bicicleta.jpg', stock: 'disponible' },
+  { nombre: 'Tornillitos', desc: 'Sujetacable y varios', cat: 'varios', emoji: '🔩', foto: 'fotos/Cubeta caja.jpg', stock: 'disponible' },
+  { nombre: 'Jaulitas para masa', desc: 'Para masa contra pedal', cat: 'varios', emoji: '🧩', foto: null, stock: 'disponible' },
 ];
 
 const categorias = [
   { id: 'todos', label: 'Todos' },
+  { id: 'basico', label: '🔥 Lo más pedido' },
   { id: 'ruedas', label: '🔵 Ruedas' },
-  { id: 'transmision', label: '⚙️ Transmisión' },
+  { id: 'pedaleo', label: '⚙️ Pedaleo' },
   { id: 'frenos', label: '🛑 Frenos' },
-  { id: 'asiento', label: '🪑 Asiento' },
-  { id: 'mantenimiento', label: '🛢️ Mantenimiento' },
-  { id: 'otros', label: '🔧 Otros' },
+  { id: 'manejo', label: '🪑 Asiento y manubrio' },
+  { id: 'varios', label: '🔧 Arreglo y varios' },
 ];
 
 let catActual = 'todos';
@@ -465,14 +518,24 @@ function setCat(id) {
 }
 
 function waLink(nombre) {
-  const msg = encodeURIComponent('Hola Jorge! Quiero consultar el precio de: ' + nombre);
+  const msg = encodeURIComponent('Hola Jorge! Vi el catálogo y quiero consultar por: ' + nombre);
   return `https://wa.me/${WA}?text=${msg}`;
 }
 
 function render() {
   const q = document.getElementById('searchInput').value.toLowerCase().trim();
+
   const filtered = productos.filter(p => {
-    const matchCat = catActual === 'todos' || p.cat === catActual;
+    let matchCat = false;
+
+    if (catActual === 'todos') {
+      matchCat = true;
+    } else if (catActual === 'basico') {
+      matchCat = p.cat === 'basico';
+    } else {
+      matchCat = p.cat === catActual;
+    }
+
     const matchQ = !q || p.nombre.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q);
     return matchCat && matchQ;
   });
@@ -493,6 +556,7 @@ function render() {
     const imgHtml = p.foto
       ? `<img src="${p.foto}" alt="${p.nombre}" loading="lazy" />`
       : `<span class="emoji-placeholder">${p.emoji}</span>`;
+
     return `
       <div class="card">
         <div class="card-img">
@@ -503,7 +567,7 @@ function render() {
           <div class="card-name">${p.nombre}</div>
           <div class="card-desc">${p.desc}</div>
           <a class="card-btn" href="${waLink(p.nombre)}" target="_blank">
-            ${WA_SVG} Consultar precio
+            ${WA_SVG} Preguntar precio
           </a>
         </div>
       </div>`;
