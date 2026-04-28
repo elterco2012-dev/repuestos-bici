@@ -534,7 +534,7 @@ const categorias = [
   { id: 'varios',    label: '🔧 Arreglo y varios' },
 ];
 
-let catActual = 'destacado';
+let catActual = 'todos';
 
 function buildCats() {
   document.getElementById('cats').innerHTML = categorias.map(c =>
@@ -552,12 +552,16 @@ function waLink(nombre) {
   return `https://wa.me/${WA}?text=${encodeURIComponent('Hola Jorge! Vi el catálogo y quiero consultar por: ' + nombre)}`;
 }
 
+function norm(str) {
+  return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+}
+
 function render() {
-  const q = document.getElementById('searchInput').value.toLowerCase().trim();
+  const q = norm(document.getElementById('searchInput').value.trim());
 
   const filtered = productos.filter(p => {
     // La búsqueda es global: ignora la categoría activa para no dar resultados vacíos
-    if (q) return p.nombre.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q);
+    if (q) return norm(p.nombre).includes(q) || norm(p.desc).includes(q);
 
     return catActual === 'todos'
       || (catActual === 'destacado' && p.destacado)
