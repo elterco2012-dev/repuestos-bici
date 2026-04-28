@@ -7,6 +7,7 @@
 <meta property="og:title" content="Repuestos de Bici · Jorge" />
 <meta property="og:description" content="Repuestos y accesorios para tu bici en Virrey del Pino. Consultá precio por WhatsApp." />
 <meta property="og:type" content="website" />
+<meta name="theme-color" content="#25D366" />
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚲</text></svg>" />
 <title>Repuestos de Bici · Jorge</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -403,9 +404,7 @@
   </div>
 </div>
 
-<a class="wa-banner"
-   href="https://wa.me/5491154767247?text=Hola%20Jorge!%20Vi%20tu%20cat%C3%A1logo%20y%20quiero%20consultar%20algo."
-   target="_blank" rel="noopener noreferrer">
+<a id="wa-main" class="wa-banner" target="_blank" rel="noopener noreferrer">
   <svg fill="white" aria-hidden="true"><use href="#wa-icon"/></svg>
   <span>Escribile a Jorge por WhatsApp</span>
 </a>
@@ -438,8 +437,7 @@
   <div class="icono" aria-hidden="true">📦</div>
   <h3>¿No encontrás lo que necesitás?</h3>
   <p>Jorge puede conseguir repuestos por encargo.<br>Consultale y en una semana lo tiene disponible.</p>
-  <a href="https://wa.me/5491154767247?text=Hola%20Jorge!%20Necesito%20un%20repuesto%20que%20no%20est%C3%A1%20en%20el%20cat%C3%A1logo.%20%C2%BFPod%C3%A9s%20conseguirme%3A%20"
-     target="_blank" rel="noopener noreferrer">
+  <a id="wa-encargo" target="_blank" rel="noopener noreferrer">
     <svg fill="white" aria-hidden="true"><use href="#wa-icon"/></svg>
     Consultar por encargo
   </a>
@@ -450,9 +448,16 @@
 </div>
 
 <script>
+// ── NÚMERO DE WHATSAPP ── cambiar acá si cambia el número
 const WA = '5491154767247';
-// SVG referenciado desde el <symbol> definido en el HTML, no inline repetido
+
 const WA_SVG = `<svg width="15" height="15" fill="white" aria-hidden="true"><use href="#wa-icon"/></svg>`;
+
+// Asigna los links de WhatsApp del HTML desde la constante WA (único lugar)
+document.getElementById('wa-main').href =
+  `https://wa.me/${WA}?text=${encodeURIComponent('Hola Jorge! Vi tu catálogo y quiero consultar algo.')}`;
+document.getElementById('wa-encargo').href =
+  `https://wa.me/${WA}?text=${encodeURIComponent('Hola Jorge! Necesito un repuesto que no está en el catálogo. ¿Podés conseguirme: ')}`;
 
 const productos = [
   // ── Ruedas ──────────────────────────────────────────────────────────────
@@ -552,6 +557,7 @@ function setCat(id) {
   catActual = id;
   buildCats();
   render();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function waLink(nombre) {
