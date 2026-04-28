@@ -9,6 +9,8 @@
 <meta property="og:type" content="website" />
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚲</text></svg>" />
 <title>Repuestos de Bici · Jorge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap" rel="stylesheet" />
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -418,7 +420,7 @@
 <div class="search-wrap">
   <span class="search-icon" aria-hidden="true">🔍</span>
   <input type="search" id="searchInput"
-         placeholder="Buscar repuesto..."
+         placeholder="Ej: cámara, cadena, freno..."
          autocomplete="off"
          oninput="render()"
          aria-label="Buscar repuesto" />
@@ -586,7 +588,7 @@ function render() {
 
   grid.innerHTML = filtered.map(p => {
     const imgHtml = p.foto
-      ? `<img src="${p.foto}" alt="${p.nombre}" loading="lazy" />`
+      ? `<img src="${p.foto}" alt="${p.nombre}" loading="lazy" onerror="this.style.display='none';this.parentElement.querySelector('.emoji-fallback').style.display='flex'" />`
       : `<span class="emoji-fallback" aria-hidden="true">${p.emoji}</span>`;
 
     const badgeHtml = p.stock === 'encargo'
