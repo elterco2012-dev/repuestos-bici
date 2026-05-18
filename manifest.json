@@ -4,7 +4,7 @@
   "description": "Catálogo de repuestos de bicicleta en Virrey del Pino. Consultá precio por WhatsApp.",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#f8fafc",
+  "background_color": "#ffffff",
   "theme_color": "#25D366",
   "lang": "es",
   "orientation": "portrait",
