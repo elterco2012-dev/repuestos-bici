@@ -1,5 +1,5 @@
 // Incrementar este número cada vez que se actualice el catálogo
-const CACHE = 'repuestos-jorge-v4';
+const CACHE = 'repuestos-jorge-v5';
 
 const PRECACHE = [
   './index.html',
