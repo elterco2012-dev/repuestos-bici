@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Comparar acentos — Cartel A4</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  body{
+    background:#15191e; color:#fff;
+    font-family:'Plus Jakarta Sans', system-ui, sans-serif;
+    padding: 40px 24px 80px;
+  }
+  h1{ font-size: 30px; font-weight: 900; letter-spacing:-.02em; text-align:center; }
+  p.sub{ text-align:center; color:#9aa6b2; font-weight:600; font-size:16px; margin-top:8px; }
+  .row{
+    display:flex; gap:28px; justify-content:center; flex-wrap:wrap;
+    margin-top: 40px;
+  }
+  .opt{
+    width: 300px;
+    background:#1d242c; border-radius:20px; overflow:hidden;
+    box-shadow:0 12px 40px rgba(0,0,0,.4);
+  }
+  .opt img{ display:block; width:100%; height:auto; }
+  .cap{ padding: 18px 20px 22px; }
+  .cap .n{
+    display:inline-flex; align-items:center; gap:8px;
+    font-weight:900; font-size:18px; letter-spacing:-.01em;
+  }
+  .cap .n .sw{ width:18px; height:18px; border-radius:50%; }
+  .cap .verdict{ margin-top:8px; color:#aeb8c2; font-weight:600; font-size:14px; line-height:1.4; }
+  .badge{
+    display:inline-block; margin-top:10px;
+    font-size:12px; font-weight:800; letter-spacing:.08em; text-transform:uppercase;
+    padding:5px 12px; border-radius:999px;
+  }
+  .pick{ background:#1FB04B; color:#fff; }
+</style>
+</head>
+<body>
+  <h1>Tres acentos para el QR</h1>
+  <p class="sub">Mismo cartel, distinto color de acento. Mirá cuál te cierra mejor.</p>
+
+  <div class="row">
+    <div class="opt">
+      <img src="screenshots/01-accent.png" alt="Acento azul tinta">
+      <div class="cap">
+        <div class="n"><span class="sw" style="background:#1E4FA3"></span> 1 · Azul tinta</div>
+        <div class="verdict">Profesional y calmo. La combo azul + verde se lee intencional. Llama al QR sin gritar.</div>
+        <span class="badge pick">Mi recomendación</span>
+      </div>
+    </div>
+
+    <div class="opt">
+      <img src="screenshots/02-accent.png" alt="Acento coral">
+      <div class="cap">
+        <div class="n"><span class="sw" style="background:#F2664B"></span> 2 · Coral</div>
+        <div class="verdict">Cálido y con energía. Llama mucho la atención, pero un escalón más "llamativo".</div>
+      </div>
+    </div>
+
+    <div class="opt">
+      <img src="screenshots/03-accent.png" alt="Acento carbón">
+      <div class="cap">
+        <div class="n"><span class="sw" style="background:#2B3440"></span> 3 · Carbón</div>
+        <div class="verdict">Sobrio y elegante, pero casi no se distingue del texto negro: pierde el efecto "mirá acá".</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

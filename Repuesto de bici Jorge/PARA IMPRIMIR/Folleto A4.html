@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Cartel A4 — Repuestos de Bici Jorge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green:        #1FB04B;
+    --green-deep:   #0E7A33;
+    --green-soft:   #E6F8EC;
+    --accent:       #F2664B;   /* coral — acento al 5%, foco del QR */
+    --accent-deep:  #C84A33;
+    --ink:          #0B1220;
+    --ink-2:        #46556A;
+    --paper:        #FFFFFF;
+  }
+
+  /* A4 vertical = 210×297mm = ~794×1123 px @ 96dpi. */
+  @page{
+    size: A4 portrait;
+    margin: 0;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  html,body{ background:#1a1a1a; font-family:'Plus Jakarta Sans', system-ui, sans-serif; color:var(--ink); }
+  body{ display:flex; justify-content:center; padding:40px 20px; }
+
+  /* ---------- POSTER ---------- */
+  .poster{
+    width: 794px;
+    height: 1123px;
+    background: var(--paper);
+    border: 2px solid var(--green);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,.35);
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ---------- HEADER ---------- */
+  .header{
+    background: var(--green);
+    color: #fff;
+    text-align: center;
+    padding: 18px 40px 16px;
+  }
+  .header .emblem{ display:flex; justify-content:center; margin-bottom: 8px; }
+  .header .emblem svg{
+    width: 104px; height: 104px;
+    border: 3.5px solid #fff;
+    border-radius: 50%;
+    padding: 22px;
+    box-sizing: border-box;
+  }
+  .header .lede{
+    font-weight: 900;
+    font-size: 72px;
+    line-height: .9;
+    letter-spacing: -.045em;
+    word-spacing: .2em;
+    text-transform: uppercase;
+  }
+  .header .lede span{ display:block; }
+  .header .sig{
+    display: flex; align-items: center; justify-content: center; gap: 14px;
+    margin-top: 10px;
+    font-weight: 700;
+    font-size: 26px;
+    letter-spacing: .02em;
+    text-transform: uppercase;
+  }
+  .header .sig::before, .header .sig::after{
+    content:""; flex: 0 0 44px; height: 2.5px; background:#fff; border-radius:2px; opacity:.85;
+  }
+  .header .sig b{ font-weight: 900; letter-spacing: -.01em; }
+
+  .header .hours{
+    display:inline-flex; align-items:center; gap:10px;
+    margin-top: 12px;
+    padding: 8px 18px;
+    background: rgba(255,255,255,.16);
+    border: 2px solid rgba(255,255,255,.55);
+    border-radius: 999px;
+    font-weight: 800;
+    font-size: 20px;
+    letter-spacing: .02em;
+    white-space: nowrap;
+  }
+  .header .hours .clock{
+    width: 20px; height: 20px; border-radius:50%;
+    border: 2.5px solid #fff;
+    position: relative;
+  }
+  .header .hours .clock::before,
+  .header .hours .clock::after{
+    content:""; position:absolute; left:50%; top:50%;
+    background:#fff; border-radius:1px;
+  }
+  .header .hours .clock::before{ width:2px; height:6px; transform:translate(-50%,-100%); }
+  .header .hours .clock::after { width:5px;  height:2px; transform:translate(-10%,-50%); }
+
+  /* ---------- CATEGORÍAS ---------- */
+  .cats{
+    padding: 22px 40px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .cats .title{
+    text-align: center;
+    font-weight: 800;
+    font-size: 30px;
+    line-height: 1;
+    letter-spacing: -.02em;
+    color: var(--ink);
+  }
+  .cats .title .q{ color: var(--green); }
+  .cats .list{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px 30px;
+  }
+  .cats .item{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 700;
+    font-size: 21px;
+    color: var(--ink);
+    letter-spacing: -.01em;
+    line-height: 1;
+    white-space: nowrap;
+  }
+  .cats .item .check{
+    flex: 0 0 auto;
+    width: 26px; height: 26px;
+    background: var(--green);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .cats .item .check svg{
+    width: 15px; height: 15px;
+    stroke: #fff; stroke-width: 3.5;
+    fill: none;
+    stroke-linecap: round; stroke-linejoin: round;
+  }
+
+  /* ---------- QR BLOCK ---------- */
+  .qr-block{
+    flex: 1;
+    background: var(--green-soft);
+    padding: 16px 40px 12px;
+    text-align: center;
+    border-top: 4px solid var(--green);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  .qr-eyebrow{
+    font-weight: 900;
+    font-size: 36px;
+    color: var(--accent-deep);
+    letter-spacing: -.015em;
+    line-height: 1.05;
+  }
+  .qr-eyebrow .arrow{ display:inline-block; transform: translateY(4px); margin-right: 6px; color: var(--accent); }
+  .qr-card{
+    width: 290px;
+    background: #fff;
+    border-radius: 22px;
+    padding: 16px;
+    box-shadow: 0 0 0 5px var(--accent);
+  }
+  .qr-card img{ display:block; width:100%; height:auto; }
+  .qr-foot{
+    font-weight: 800;
+    font-size: 20px;
+    color: var(--green-deep);
+    letter-spacing: .04em;
+    text-transform: uppercase;
+  }
+
+  /* ---------- WHATSAPP CTA ---------- */
+  .wa-cta{
+    margin: 0 40px 12px;
+    background: var(--green);
+    border-radius: 20px;
+    padding: 13px 24px;
+    display: flex; align-items: center; justify-content: center; gap: 16px;
+    color: #fff;
+    text-decoration: none;
+  }
+  .wa-cta .icon{
+    width: 66px; height: 66px;
+    background: #fff;
+    color: var(--green);
+    border-radius: 16px;
+    display: flex; align-items: center; justify-content: center;
+    flex: 0 0 auto;
+  }
+  .wa-cta .icon svg{ width: 46px; height: 46px; }
+  .wa-cta .num{
+    font-weight: 900;
+    font-size: 54px;
+    line-height: 1;
+    letter-spacing: -.025em;
+    white-space: nowrap;
+  }
+
+  /* ---------- DIRECCIÓN ---------- */
+  .addr{
+    margin: 0 40px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-weight: 800;
+    font-size: 26px;
+    color: var(--ink);
+    letter-spacing: -.01em;
+  }
+  .addr .pin{
+    flex: 0 0 auto;
+    width: 24px; height: 24px;
+    position: relative;
+  }
+  .addr .pin::before{
+    content:""; position:absolute; left:50%; top:0;
+    width: 19px; height: 19px;
+    background: var(--green);
+    border-radius: 50% 50% 50% 0;
+    transform: translateX(-50%) rotate(-45deg);
+  }
+  .addr .pin::after{
+    content:""; position:absolute; left:50%; top:6px;
+    width: 7px; height: 7px;
+    background:#fff; border-radius:50%;
+    transform: translateX(-50%);
+  }
+
+  /* ---------- PRINT ---------- */
+  @media print{
+    html, body{ background:#fff; margin:0; padding:0; }
+    body{ display:block; }
+    .poster{
+      width: 210mm;
+      height: 297mm;
+      border: 1.5px solid var(--green);
+      border-radius: 0;
+      box-shadow: none;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <div class="poster">
+
+    <!-- HEADER -->
+    <header class="header">
+      <div class="emblem" aria-hidden="true">
+        <svg viewBox="-1.5 -1.5 27 27" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="overflow:visible">
+          <circle cx="18.5" cy="17.5" r="3.5"/>
+          <circle cx="5.5" cy="17.5" r="3.5"/>
+          <circle cx="15" cy="5" r="1" fill="#fff"/>
+          <path d="M12 17.5V14l-3-3 4-3 2 3h2"/>
+        </svg>
+      </div>
+      <h1 class="lede">
+        <span>Repuestos</span>
+        <span>de Bici</span>
+      </h1>
+      <div class="sig"><b>Jorge</b></div>
+      <div class="hours">
+        <span class="clock"></span>
+        Lun a Sáb · 9 a 18 hs
+      </div>
+    </header>
+
+    <!-- CATEGORÍAS -->
+    <section class="cats">
+      <div class="title">Lo que vas a <span class="q">encontrar</span></div>
+      <div class="list">
+        <div class="item"><span class="check"><svg viewBox="0 0 24 24"><polyline points="5 13 10 18 19 7"/></svg></span>Cubiertas y cámaras</div>
+        <div class="item"><span class="check"><svg viewBox="0 0 24 24"><polyline points="5 13 10 18 19 7"/></svg></span>Parches y pegamentos</div>
+        <div class="item"><span class="check"><svg viewBox="0 0 24 24"><polyline points="5 13 10 18 19 7"/></svg></span>Frenos y cadenas</div>
+        <div class="item"><span class="check"><svg viewBox="0 0 24 24"><polyline points="5 13 10 18 19 7"/></svg></span>Asientos y manubrios</div>
+        <div class="item"><span class="check"><svg viewBox="0 0 24 24"><polyline points="5 13 10 18 19 7"/></svg></span>Infladores y herramientas</div>
+        <div class="item"><span class="check"><svg viewBox="0 0 24 24"><polyline points="5 13 10 18 19 7"/></svg></span>Aceite, grasa y luces</div>
+      </div>
+    </section>
+
+    <!-- QR -->
+    <section class="qr-block">
+      <div class="qr-eyebrow"><span class="arrow">▼</span> Escaneá y consultá</div>
+      <div class="qr-card">
+        <img src="qr-catalogo.png" alt="Código QR — catálogo de Repuestos de Bici Jorge">
+      </div>
+      <div class="qr-foot">Catálogo online</div>
+    </section>
+
+    <!-- WHATSAPP -->
+    <a class="wa-cta" href="https://wa.me/5491154767247">
+      <span class="icon" aria-hidden="true">
+        <svg viewBox="0 0 32 32" fill="currentColor">
+          <path d="M19.11 17.205c-.372 0-1.088 1.39-1.518 1.39a.63.63 0 0 1-.315-.1c-.802-.402-1.504-.817-2.163-1.447-.545-.516-1.146-1.29-1.46-1.963a.426.426 0 0 1-.073-.215c0-.33.99-.945.99-1.49 0-.143-.73-2.09-.832-2.335-.143-.372-.214-.487-.6-.487-.187 0-.36-.043-.53-.043-.302 0-.53.115-.746.315-.688.645-1.032 1.318-1.06 2.264v.114c-.015.99.472 1.977 1.017 2.78 1.23 1.82 2.506 3.41 4.554 4.34.616.287 2.035.888 2.722.888.817 0 2.15-.515 2.478-1.318.13-.33.27-.66.27-1.006 0-.244-.058-.36-.226-.474-.255-.135-2.105-1.097-2.504-1.097zm-2.49 7.39h-.014c-1.857 0-3.59-.545-5.082-1.46l-3.552 1.132 1.16-3.435a8.992 8.992 0 0 1-1.74-5.323c0-4.997 4.13-9.073 9.234-9.073 2.483 0 4.812.946 6.562 2.665a8.853 8.853 0 0 1 2.715 6.408c-.002 4.992-4.13 9.085-9.282 9.085zM16.62 5C10.55 5 5.61 9.832 5.61 15.776A10.61 10.61 0 0 0 7.083 21.2L5 27.286l6.367-2.027c1.6.86 3.4 1.318 5.236 1.318h.014c6.067 0 11.092-4.832 11.092-10.778 0-2.882-1.156-5.59-3.252-7.624A11.094 11.094 0 0 0 16.622 5z"/>
+        </svg>
+      </span>
+      <span class="num">11 5476-7247</span>
+    </a>
+
+    <!-- DIRECCIÓN -->
+    <div class="addr">
+      <span class="pin" aria-hidden="true"></span>
+      Siria 6110, Virrey del Pino
+    </div>
+
+  </div>
+
+<!--
+  Cartel A4 — versión auto-imprimible.
+  Imprimí con "Gráficos de fondo" activado para que salga el verde.
+-->
+
+<script>
+  (async function(){
+    try {
+      if (document.fonts && document.fonts.ready) await document.fonts.ready;
+      const qr = document.querySelector('.qr-card img');
+      if (qr && !qr.complete) {
+        await new Promise(res => {
+          qr.addEventListener('load', res, { once: true });
+          qr.addEventListener('error', res, { once: true });
+        });
+      }
+      await new Promise(r => setTimeout(r, 400));
+      window.print();
+    } catch(e) {
+      console.warn('autoprint:', e);
+      window.print();
+    }
+  })();
+</script>
+</body>
+</html>
