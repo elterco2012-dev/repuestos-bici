@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Tarjeta Personal — Repuestos de Bici Jorge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green:        #1FB04B;
+    --green-deep:   #0E7A33;
+    --green-soft:   #E6F8EC;
+    --accent:       #F2664B;   /* coral — foco del QR */
+    --accent-deep:  #C84A33;
+    --ink:          #0B1220;
+    --ink-2:        #46556A;
+    --paper:        #FFFFFF;
+    --card:         #F4F6FA;
+  }
+
+  /* Tarjeta estándar 85×55 mm.
+     Diseñamos a 850×550 px (10× ratio) y escalamos en print. */
+  @page{
+    size: 85mm 55mm;
+    margin: 0;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  html,body{ background:#1a1a1a; font-family:'Plus Jakarta Sans', system-ui, sans-serif; color:var(--ink); }
+  body{ display:flex; flex-direction:column; align-items:center; gap:40px; padding:60px 20px; }
+
+  .label{
+    color:#7d8a98; font-weight:700; font-size:14px; letter-spacing:.2em;
+    text-transform:uppercase; align-self:flex-start; margin-left:20px;
+  }
+  .row{ display:flex; gap:40px; flex-wrap:wrap; justify-content:center; }
+
+  /* ---------- CARD BASE ---------- */
+  .card{
+    width: 850px;
+    height: 550px;
+    background: var(--paper);
+    border-radius: 32px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,.35);
+    position: relative;
+  }
+
+  /* ---------- FRONT ---------- */
+  .front{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: var(--paper);
+  }
+  .front .left{
+    background: var(--green);
+    color: #fff;
+    padding: 50px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 18px;
+  }
+  .front .emblem svg{
+    width: 104px;
+    height: 104px;
+    border: 4px solid #fff;
+    border-radius: 50%;
+    padding: 22px;
+    box-sizing: border-box;
+  }
+  .front .lede{
+    font-weight: 900;
+    font-size: 64px;
+    line-height: .9;
+    letter-spacing: -.04em;
+    word-spacing: .18em;
+    text-transform: uppercase;
+  }
+  .front .lede span{ display:block; }
+  .front .sig{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-weight: 700;
+    font-size: 24px;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    margin-top: 6px;
+  }
+  .front .sig::before, .front .sig::after{
+    content: "";
+    width: 28px; height: 3px;
+    background: #fff;
+    opacity: .85;
+    border-radius: 2px;
+  }
+  .front .sig b{ font-weight: 900; letter-spacing: -.01em; }
+
+  .front .right{
+    padding: 50px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    background: #fff;
+  }
+  .front .qr{
+    width: 320px; height: 320px;
+    background: #fff;
+    border-radius: 18px;
+    padding: 14px;
+    box-shadow: 0 0 0 4px var(--accent);
+  }
+  .front .qr img{ display:block; width:100%; height:100%; }
+  .front .scan{
+    font-weight: 800;
+    font-size: 22px;
+    color: var(--accent-deep);
+    letter-spacing: -.01em;
+  }
+  .front .scan .arrow{ display:inline-block; transform: translateY(2px); margin-right: 4px; }
+
+  /* ---------- BACK ---------- */
+  .back{
+    background: var(--paper);
+    padding: 38px 44px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .back .head{
+    display: flex; align-items: center; gap: 18px;
+  }
+  .back .head svg{ width: 56px; height: 56px; color: var(--green); }
+  .back .head .name{
+    font-weight: 900;
+    font-size: 34px;
+    line-height: 1;
+    letter-spacing: -.02em;
+    color: var(--ink);
+  }
+  .back .head .name small{
+    display:block;
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--ink-2);
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    margin-top: 5px;
+  }
+  .back .cats{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 9px 22px;
+  }
+  .back .cats .item{
+    display: flex; align-items: center; gap: 9px;
+    font-weight: 700;
+    font-size: 19px;
+    color: var(--ink);
+    letter-spacing: -.01em;
+    line-height: 1;
+    white-space: nowrap;
+  }
+  .back .cats .item .dot{
+    flex: 0 0 auto;
+    width: 16px; height: 16px;
+    background: var(--green);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .back .cats .item .dot svg{
+    width: 9px; height: 9px;
+    stroke:#fff; stroke-width:3.5; fill:none;
+    stroke-linecap:round; stroke-linejoin:round;
+  }
+  .back .phone{
+    display: flex; align-items: center; gap: 18px;
+    background: var(--green);
+    color: #fff;
+    padding: 20px 28px;
+    border-radius: 22px;
+  }
+  .back .phone .ico{
+    width: 56px; height: 56px;
+    background: #fff;
+    color: var(--green);
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    flex: 0 0 auto;
+  }
+  .back .phone .ico svg{ width: 40px; height: 40px; }
+  .back .phone .num{
+    font-weight: 900;
+    font-size: 42px;
+    line-height: 1;
+    letter-spacing: -.02em;
+    white-space: nowrap;
+  }
+  .back .meta{
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    font-weight: 800;
+    font-size: 19px;
+    color: var(--ink-2);
+    letter-spacing: -.005em;
+  }
+  .back .meta .line{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .back .meta .pin{
+    flex: 0 0 auto;
+    width: 18px; height: 18px;
+    position: relative;
+  }
+  .back .meta .pin::before{
+    content:"";
+    position:absolute; left:50%; top:0;
+    width: 14px; height: 14px;
+    background: var(--ink-2);
+    border-radius: 50% 50% 50% 0;
+    transform: translateX(-50%) rotate(-45deg);
+  }
+  .back .meta .pin::after{
+    content:"";
+    position:absolute; left:50%; top:5px;
+    width: 5px; height: 5px;
+    background:#fff;
+    border-radius:50%;
+    transform: translateX(-50%);
+  }
+  .back .meta .clock{
+    width: 20px; height: 20px;
+    border: 3px solid var(--ink-2);
+    border-radius: 50%;
+    position: relative;
+  }
+  .back .meta .clock::before,
+  .back .meta .clock::after{
+    content:""; position:absolute; left:50%; top:50%;
+    background:var(--ink-2); border-radius:1px;
+  }
+  .back .meta .clock::before{ width:2px; height:7px; transform:translate(-50%,-100%); }
+  .back .meta .clock::after { width:6px;  height:2px; transform:translate(-10%,-50%); }
+
+  /* ---------- PRINT ---------- */
+  @media print{
+    html, body{ background:#fff; margin:0; padding:0; }
+    body{ display:block; gap:0; }
+    .label, .row{ display: contents; }
+    .card{
+      width: 850px;
+      height: 550px;
+      border-radius: 0;
+      box-shadow: none;
+      page-break-after: always;
+      break-after: page;
+    }
+    .card:last-of-type{ page-break-after: auto; break-after: auto; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="label">Frente · Dorso (vista en pantalla)</div>
+
+  <div class="row">
+
+    <!-- ============ FRENTE ============ -->
+    <div class="card front">
+      <div class="left">
+        <div class="emblem" aria-hidden="true">
+          <svg viewBox="-1.5 -1.5 27 27" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="overflow:visible">
+            <circle cx="18.5" cy="17.5" r="3.5"/>
+            <circle cx="5.5" cy="17.5" r="3.5"/>
+            <circle cx="15" cy="5" r="1" fill="#fff"/>
+            <path d="M12 17.5V14l-3-3 4-3 2 3h2"/>
+          </svg>
+        </div>
+        <div class="lede">
+          <span>Repuestos</span>
+          <span>de Bici</span>
+        </div>
+        <div class="sig"><b>Jorge</b></div>
+      </div>
+      <div class="right">
+        <div class="qr">
+          <img src="qr-catalogo.png" alt="Código QR catálogo">
+        </div>
+        <div class="scan"><span class="arrow">←</span> Escaneá el catálogo</div>
+      </div>
+    </div>
+
+    <!-- ============ DORSO ============ -->
+    <div class="card back">
+      <div class="head">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="18.5" cy="17.5" r="3.5"/>
+          <circle cx="5.5" cy="17.5" r="3.5"/>
+          <circle cx="15" cy="5" r="1" fill="currentColor"/>
+          <path d="M12 17.5V14l-3-3 4-3 2 3h2"/>
+        </svg>
+        <div class="name">
+          Jorge
+          <small>Repuestos de Bici</small>
+        </div>
+      </div>
+
+      <div class="cats">
+        <div class="item"><span class="dot"><svg viewBox="0 0 24 24"><polyline points="5 13 10 18 19 7"/></svg></span>Cubiertas y cámaras</div>
+        <div class="item"><span class="dot"><svg viewBox="0 0 24 24"><polyline points="5 13 10 18 19 7"/></svg></span>Parches y pegamentos</div>
+        <div class="item"><span class="dot"><svg viewBox="0 0 24 24"><polyline points="5 13 10 18 19 7"/></svg></span>Frenos y cadenas</div>
+        <div class="item"><span class="dot"><svg viewBox="0 0 24 24"><polyline points="5 13 10 18 19 7"/></svg></span>Asientos y manubrios</div>
+        <div class="item"><span class="dot"><svg viewBox="0 0 24 24"><polyline points="5 13 10 18 19 7"/></svg></span>Infladores y herramientas</div>
+        <div class="item"><span class="dot"><svg viewBox="0 0 24 24"><polyline points="5 13 10 18 19 7"/></svg></span>Aceite, grasa y luces</div>
+      </div>
+
+      <div class="phone">
+        <span class="ico" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="currentColor">
+            <path d="M19.11 17.205c-.372 0-1.088 1.39-1.518 1.39a.63.63 0 0 1-.315-.1c-.802-.402-1.504-.817-2.163-1.447-.545-.516-1.146-1.29-1.46-1.963a.426.426 0 0 1-.073-.215c0-.33.99-.945.99-1.49 0-.143-.73-2.09-.832-2.335-.143-.372-.214-.487-.6-.487-.187 0-.36-.043-.53-.043-.302 0-.53.115-.746.315-.688.645-1.032 1.318-1.06 2.264v.114c-.015.99.472 1.977 1.017 2.78 1.23 1.82 2.506 3.41 4.554 4.34.616.287 2.035.888 2.722.888.817 0 2.15-.515 2.478-1.318.13-.33.27-.66.27-1.006 0-.244-.058-.36-.226-.474-.255-.135-2.105-1.097-2.504-1.097zm-2.49 7.39h-.014c-1.857 0-3.59-.545-5.082-1.46l-3.552 1.132 1.16-3.435a8.992 8.992 0 0 1-1.74-5.323c0-4.997 4.13-9.073 9.234-9.073 2.483 0 4.812.946 6.562 2.665a8.853 8.853 0 0 1 2.715 6.408c-.002 4.992-4.13 9.085-9.282 9.085zM16.62 5C10.55 5 5.61 9.832 5.61 15.776A10.61 10.61 0 0 0 7.083 21.2L5 27.286l6.367-2.027c1.6.86 3.4 1.318 5.236 1.318h.014c6.067 0 11.092-4.832 11.092-10.778 0-2.882-1.156-5.59-3.252-7.624A11.094 11.094 0 0 0 16.622 5z"/>
+          </svg>
+        </span>
+        <span class="num">11 5476-7247</span>
+      </div>
+
+      <div class="meta">
+        <div class="line"><span class="clock"></span>Lun a Sáb · 9 a 18 hs</div>
+        <div class="line"><span class="pin" aria-hidden="true"></span>Siria 6110, Virrey del Pino</div>
+      </div>
+    </div>
+
+  </div>
+
+<!--
+  Para imprenta:
+  - Tamaño tarjeta: 85×55 mm (estándar). Pediles "tarjeta personal estándar".
+  - El PDF que genere este archivo tiene 2 páginas: 1) frente, 2) dorso.
+    La mayoría de las imprentas online te dejan subir las dos imágenes/PDFs por separado.
+  - Si te piden con sangrado (bleed), pediles "tarjeta 85×55mm sin sangrado, listo para imprimir"
+    o que ellos extiendan los bordes verdes 3mm.
+-->
+</body>
+</html>
