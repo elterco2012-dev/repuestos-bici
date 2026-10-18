@@ -634,6 +634,21 @@ render();
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('./sw.js');
 }
+
+function trackVisit() {
+  var hoy = new Date().toISOString().slice(0, 10);
+  try {
+    if (localStorage.getItem('visit_day') === hoy) return;
+  } catch (e) { return; }
+  fetch('./tracker.php', { method: 'POST' })
+    .then(function(r) {
+      if (r.ok || r.status === 204) {
+        try { localStorage.setItem('visit_day', hoy); } catch (e) {}
+      }
+    })
+    .catch(function() {});
+}
+trackVisit();
 </script>
 </body>
 </html>
